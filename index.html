@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>muftibooks</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Nav -->
+    <nav class="bg-black-100">
+      <div class="container">
+        <div class="nav-area d-flex justify-content-center align-items-center">
+          <h1 class="fs-xl fw-normal"><span class="fw-bold"> mufti.</span>books</h1>
+        </div>
+      </div>
+    </nav>
+    <!-- End Nav -->
+
+    <!-- Tambah Buku -->
+    <section class="py-5">
+      <div class="container">
+        <div class="tambah-buku-box row justify-content-center align-items-center">
+          <div class="col-12 col-md-10">
+            <h6 class="fw-bold fs-md mb-3"><i class="bi bi-plus-lg text-orange-flat"></i> Tambah Buku Baru</h6>
+            <form id="form" action="#" class="form-input-buku d-flex flex-column justify-content-center align-items-center">
+              <input id="input-judul" type="text" class="input-buku" placeholder="Judul buku..." required />
+              <input id="input-penulis" type="text" class="input-buku" placeholder="Penulis..." required />
+              <input id="input-tahun" type="text" class="input-buku" placeholder="Tahun terbit..." required />
+              <input type="submit" class="button-tambah-buku" value="TAMBAHKAN BUKU" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Tambah Buku -->
+
+    <!-- Belum Selesai -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h5 class="section-title">Belum Selesai Dibaca</h5>
+          </div>
+        </div>
+        <div id="uncompleted-collection" class="row py-3 justify-content-center"></div>
+      </div>
+    </section>
+    <!-- End Belum Selesai -->
+
+    <!-- Selesai -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h5 class="section-title">Selesai Dibaca</h5>
+          </div>
+        </div>
+        <div id="completed-collection" class="row py-3 justify-content-center"></div>
+      </div>
+    </section>
+    <!-- End Selesai -->
+
+    <!-- ALert -->
+    <h5 class="alert-added col-10 col-md-3 text-center"></h5>
+    <!-- End Alert -->
+
+    <script src="script.js"></script>
+  </body>
+</html>
