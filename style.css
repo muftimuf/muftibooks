@@ -107,7 +107,7 @@ nav {
 }
 
 .nav-area {
-  height: 120px;
+  height: 80px;
   width: 100%;
 }
 
@@ -242,4 +242,33 @@ nav {
   70% {
     bottom: 30px;
   }
+}
+
+#search-form {
+  width: 100%;
+}
+
+#input-search {
+  color: var(--white-100);
+  background-color: var(--black-50);
+  border: none;
+  outline: none;
+  padding: 20px 40px;
+  border-radius: 50px 0 0 50px;
+}
+
+#submit-search {
+  border-radius: 0 50px 50px 0;
+  color: var(--white-100);
+  background-color: var(--orange-flat);
+  border: none;
+  outline: none;
+  padding: 20px;
+}
+
+#delete-search {
+  color: var(--black-10);
+  background-color: var(--black-100);
+  border: none;
+  outline: none;
 }

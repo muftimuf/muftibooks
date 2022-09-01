@@ -6,6 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
     popUpAlert("Buku udah ditambah ");
   });
 
+  const searchForm = document.getElementById("search-form");
+  searchForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    searchBook();
+  });
+
   if (isStorageExist()) {
     loadDataFromStorage();
   }
@@ -72,8 +78,19 @@ function makeBook(bookObject) {
   cardText.classList.add("card-text");
   cardText.append(textJudul, textPenulis, textTahun);
 
+  const btnDelete = document.createElement("a");
+  btnDelete.classList.add("tombol-delete");
+  btnDelete.innerHTML = '<i class="bi bi-trash3-fill"></i>';
+
+  btnDelete.addEventListener("click", function () {
+    removeBook(bookObject.id);
+
+    popUpAlert("Bukunya udah dihapus ");
+  });
+
   const cardButton = document.createElement("div");
   cardButton.classList.add("card-tombol");
+  cardButton.append(btnDelete);
 
   const bukuCard = document.createElement("div");
   bukuCard.classList.add("buku-card");
@@ -95,17 +112,7 @@ function makeBook(bookObject) {
       popUpAlert("Baca lagi yuk ");
     });
 
-    const btnDelete = document.createElement("a");
-    btnDelete.classList.add("tombol-delete");
-    btnDelete.innerHTML = '<i class="bi bi-trash3-fill"></i>';
-
-    btnDelete.addEventListener("click", function () {
-      removeBook(bookObject.id);
-
-      popUpAlert("Bukunya udah dihapus ");
-    });
-
-    cardButton.append(btnDelete, btnUndo);
+    cardButton.append(btnUndo);
   } else {
     const btnDone = document.createElement("a");
     btnDone.classList.add("tombol-selesai");
@@ -117,17 +124,7 @@ function makeBook(bookObject) {
       popUpAlert("Yeay selesai dibaca ");
     });
 
-    const btnDelete = document.createElement("a");
-    btnDelete.classList.add("tombol-delete");
-    btnDelete.innerHTML = '<i class="bi bi-trash3-fill"></i>';
-
-    btnDelete.addEventListener("click", function () {
-      removeBook(bookObject.id);
-
-      popUpAlert("Bukunya udah dihapus ");
-    });
-
-    cardButton.append(btnDelete, btnDone);
+    cardButton.append(btnDone);
   }
 
   return bukuContainer;
@@ -209,6 +206,30 @@ function findBookIndex(bookId) {
 
   return -1;
 }
+
+function searchBook() {
+  let inputSearch = document.getElementById("input-search").value;
+
+  for (const bookItem of books) {
+    const hideCard = document.getElementById(`book-${bookItem.id}`);
+
+    if (inputSearch.toLowerCase() != bookItem.title.toLowerCase()) {
+      hideCard.classList.add("d-none");
+    } else {
+      hideCard.classList.remove("d-none");
+    }
+
+    if (inputSearch.toLowerCase() == "") {
+      hideCard.classList.remove("d-none");
+    }
+  }
+}
+
+const deleteSearchButton = document.getElementById("delete-search");
+
+deleteSearchButton.addEventListener("click", function () {
+  document.getElementById("input-search").value = "";
+});
 
 function saveData() {
   if (isStorageExist()) {
